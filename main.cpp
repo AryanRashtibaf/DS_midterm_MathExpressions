@@ -1,35 +1,11 @@
-#include<bits/stdc++.h>
-#include"MyStack.hpp"
+#include<iostream>
+#include"MyStack.cpp"
+#include"MyArrayList.cpp"
 using namespace std ; 
 
 int main(){
-    MyStack<int> s ; 
-    for (int i = 0; i < 5; i++)
-    {
-        s.push(i) ; 
-    }
-    try{
-    cout << s.getSize() << endl ;
-    cout << s.getTop() << endl ;
-    cout << s.isFull() << endl ;
-    cout << s.isEmpty() << endl ;
-    cout << "gf" << endl;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ; 
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ; 
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ;
-    cout << s.pop() << endl ; 
-    cout << s.pop() << endl ;
-    cout << "df" << endl ;
-    }
-    catch(...){
-        cout << "gdfggfgfgf" << endl ;
-    }
+    MyArrayList<int> a ; 
+    a.add(2) ; 
+    a.add(4) ;
+    cout << a.get(0) << a.get(1) << a.getSize() << endl ;
 }

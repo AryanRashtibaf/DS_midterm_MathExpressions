@@ -21,7 +21,7 @@ template<typename T> void MyStack<T> :: increaseSize(){
     arr = new int[size] ; 
     for(int i = 0 ; i < size / 2 ; i++)
         arr[i] = tmp[i] ; 
-    delete[] tmp ;
+    delete []tmp ;
 }
 
 template<typename T> MyStack<T> :: MyStack(){
