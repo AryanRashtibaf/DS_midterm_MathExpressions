@@ -7,6 +7,8 @@
 using namespace std ;
     
 bool isOperator(string s) ;
+int getPeriority(string s) ;
+bool validInfix(MyArrayList<string> &in) ;
 MyArrayList<string>* split(string s) ;
 MyArrayList<string>* preToIn(MyArrayList<string> &pre , bool isCountable) ;
 MyArrayList<string>* inToPost(MyArrayList<string> &in , bool isCountable) ; 
