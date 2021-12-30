@@ -1,24 +1,10 @@
-template<typename T> class MyStack{
-    private:
-        int top ; 
-        int size ; 
-        T* arr ;
-        void increaseSize() ;
-
-    public:
-        MyStack() ; 
-        T getTop() ; 
-        T pop() ; 
-        int getSize() ;
-        void push(T p) ; 
-        bool isFull() ; 
-        bool isEmpty() ; 
-};
+#include"MyStack.h"
+using namespace std ;
 
 template<typename T> void MyStack<T> :: increaseSize(){
     T* tmp = arr ;
     size *= 2 ;  
-    arr = new int[size] ; 
+    arr = new T[size] ; 
     for(int i = 0 ; i < size / 2 ; i++)
         arr[i] = tmp[i] ; 
     delete []tmp ;
@@ -27,7 +13,7 @@ template<typename T> void MyStack<T> :: increaseSize(){
 template<typename T> MyStack<T> :: MyStack(){
     size = 2 ; 
     top = -1 ; 
-    arr = new int[size] ;
+    arr = new T[size] ;
 }
 
 template<typename T> T MyStack<T> :: getTop(){
@@ -65,5 +51,12 @@ template<typename T> bool MyStack<T> :: isEmpty(){
     return false ;
 }
 
-
+template<typename T> string* MyStack<T> :: toStr(){
+    static string s ;
+    s = "" ;
+    for(int i = 0 ; i < top+1 ; i++){
+        s += arr[i] + "," ;
+    }
+    return &s ; 
+}
 

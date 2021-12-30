@@ -1,16 +1,4 @@
-template<typename T> class MyArrayList{
-    private:
-        int arraySize , size ; 
-        T* data ; 
-        void increaseArraySize() ;
-
-    public:
-        MyArrayList() ;
-        ~MyArrayList() ;
-        T get(int index) ;
-        void add(T a) ;
-        int getSize() ; 
-};
+#include"MyArrayList.h"
 
 template<typename T> MyArrayList<T> :: MyArrayList(){
     size = 0 ; 
@@ -30,6 +18,7 @@ template<typename T> void MyArrayList<T> :: add(T a){
     if(size == arraySize)
         increaseArraySize() ;
     data[size++] = a ; 
+ 
 }
 
 template<typename T> int MyArrayList<T> :: getSize(){
@@ -40,6 +29,7 @@ template<typename T> void MyArrayList<T> :: increaseArraySize(){
     T* tmp = new T[arraySize * 2] ; 
     for(int i = 0 ; i < arraySize ; i++)
         tmp[i] = data[i] ; 
+    arraySize *= 2 ;
     delete []data ;
     data = tmp ;
 }
