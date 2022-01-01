@@ -8,12 +8,11 @@
 using namespace std ; 
 
 int main(){
-    string s = "( a + b ) ^ 3 * 2 / 7" ;
+    string s = "/ * - + a b c ^ d ^ e f g" ;
     MyArrayList<string>* a = split(s) ;
     MyArrayList<string>* ans ;
-    ans = inToPost(*a , true) ;
+    ans = preToPost(*a) ;
     for(int i = 0 ; i < ans->getSize() ; i++){
         cout << ans->get(i) << endl ;
-    } 
-
+    }
 }
