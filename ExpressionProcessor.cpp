@@ -102,6 +102,9 @@ MyArrayList<string>* inToPost(MyArrayList<string> &in){
     }
     while(operators.getSize() != 0)
         post.push(operators.pop()) ;
+    string tmp = "Operators stack: " + *operators.toStr() + "\n" ;
+    tmp += "Postfix stack: " + *post.toStr() + "\n_________________________________" ;
+    answers->add(tmp) ;
     return answers ; 
 }
 
@@ -182,9 +185,9 @@ MyArrayList<string>* split(string s){
     static MyArrayList<string>* a;
     a = new MyArrayList<string>() ;
     for(int i = 0 ; i < s.length() ; i++){
-        if(s[i] != ' ' && s[i] != ','){
+        if(s[i] != ' ' && s[i] != ',' && s[i] != '\n'){
             string tmp = "" ;
-            while(i < s.length() && s[i] != ' ' && s[i] != ','){
+            while(i < s.length() && s[i] != ' ' && s[i] != ',' && s[i] != '\n'){
                 tmp += s[i] ;
                 i++ ;
             }

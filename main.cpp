@@ -9,8 +9,6 @@ int main(){
         cin >> n ; 
         if(n == 0)
             return 0 ;
-        inp.getNum(n) ;
-
+        inp.getNum(n-1) ;
     }
-    
 }

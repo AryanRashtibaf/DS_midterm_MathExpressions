@@ -16,6 +16,7 @@ struct ConvertType{
 class InputProcessor{
     private:
         ConvertType c[6] ;
+        ConvertType tmp[6] ;
         int per ;
         int k ;
         string s ;
@@ -29,44 +30,61 @@ class InputProcessor{
                 for(int i = 0 ; i < ans->getSize() ; i++){
                     cout << ans->get(i) << endl ;
                 }
-                if(c[k].count == 0)
-                    c[k].priority = per++ ;
+                if(c[k].count == 0){
+                    c[k].priority = per ;
+                    per++ ;
+                }
                 c[k].count++ ;
             }
         }
 
+        void copyConvertType(){
+            for(int i = 0 ; i < 6 ; i++)
+                tmp[i] = c[i] ; 
+        }
+
         void upToDownSort(){
+            copyConvertType() ;
             for(int i = 0 ; i < 5 ; i++){
                 for(int j = 0 ; j < 5 - i ; j++){
-                    if(c[j].count < c[j+1].count){
-                        swap(&c[j] , &c[j+1]) ;
+                    if(tmp[j].count < tmp[j+1].count){
+                        swap(&tmp[j] , &tmp[j+1]) ;
                     }
-                    else if(c[j].count == c[j+1].count){
-                        if(c[j].priority > c[j+1].priority)
-                            swap(&c[j] , &c[j+1]) ;
+                    else if(tmp[j].count == tmp[j+1].count){
+                        if(tmp[j].priority > tmp[j+1].priority)
+                            swap(&tmp[j] , &tmp[j+1]) ;
                     }
                 }
+            }
+
+            for(int i = 0 ; i < 6 ; i++){
+                cout << tmp[i].name + " " << tmp[i].count << endl ;
             }
         }
 
         void downToUpSort(){
+            copyConvertType() ; 
             for(int i = 0 ; i < 5 ; i++){
                 for(int j = 0 ; j < 5 - i ; j++){
-                    if(c[j].count > c[j+1].count){
-                        swap(&c[j] , &c[j+1]) ;
+                    if(tmp[j].count > tmp[j+1].count){
+                        swap(&tmp[j] , &tmp[j+1]) ;
                     }
-                    else if(c[j].count == c[j+1].count){
-                        if(c[j].priority > c[j+1].priority)
-                            swap(&c[j] , &c[j+1]) ;
+                    else if(tmp[j].count == tmp[j+1].count){
+                        if(tmp[j].priority > tmp[j+1].priority)
+                            swap(&tmp[j] , &tmp[j+1]) ;
                     }
                 }
+            }
+
+            for(int i = 0 ; i < 6 ; i++){
+                cout << tmp[i].name + " " << tmp[i].count << endl ;
             }
         }
 
         void swap(ConvertType* c1 , ConvertType* c2){
-            ConvertType* tmp = c1 ; 
-            c1 = c2 ; 
-            c2 = tmp ;
+            ConvertType tmp = *c1 ; 
+            *c1 = *c2 ;
+            *c2 = tmp ;
         }
 
     public:
@@ -83,8 +101,11 @@ class InputProcessor{
 
         void getNum(int n){
             if(n <= 6 && n >= 0){
-                cin >> s ;
-                sp = split(s) ;
+                if(n != 6){
+                    cin.ignore() ;
+                    getline(cin , s) ;
+                    sp = split(s) ;
+                }
                 switch(n){
                     case 0:
                         ans = inToPost(*sp) ;
